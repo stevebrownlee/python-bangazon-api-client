@@ -12,9 +12,9 @@ angular.module('BangaClient').controller('ProductTypesController', [
           $http.get(`${root.product_types}`)
                .then(
                  res => $scope.product_types = res.data.results,
-                 err => console.log
+                 console.log
                )
-        ,err => console.log
+        ,console.log
       );
   }
 ]);
