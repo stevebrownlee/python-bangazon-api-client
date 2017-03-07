@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>REST Auth</title>
+
+    <style>
+      .metadata {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-app='BangaClient'>
+      <div>
+        <span>
+          <a ng-href="/#!/products">Products</a>
+          <a ng-href="/#!/types">Product Types</a>
+        </span>
+      </div>
+      <div ng-view></div>
+    </div>
+
+    <script src='./node_modules/angular/angular.min.js'></script>
+    <script src='./node_modules/angular-route/angular-route.min.js'></script>
+
+
+    <script src='./bangaclient/app.js'></script>
+    <script src='./bangaclient/auth/AuthCtrl.js'></script>
+    <script src='./bangaclient/products/ProductsCtrl.js'></script>
+    <script src='./bangaclient/products/ProductTypesCtrl.js'></script>
+  </body>
+</html>
