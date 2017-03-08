@@ -2,21 +2,14 @@
 var app = angular.module('BangaClient', ['ngRoute'])
             .constant('apiUrl', "http://localhost:8000");
 
-// Configure to use interpolation punctuation that differs from Django's
-// and add the CSRF token when communicating via XHR with Django
 angular.module('BangaClient').config(
 [
     '$interpolateProvider',
-    '$httpProvider',
     '$routeProvider',
-    function($interpolateProvider, $httpProvider, $routeProvider) {
+    function($interpolateProvider, $routeProvider) {
 
       $interpolateProvider.startSymbol('((');
       $interpolateProvider.endSymbol('))');
-
-      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-      $httpProvider.defaults.withCredentials = true;
 
       $routeProvider
         .when('/', {
@@ -38,11 +31,22 @@ angular.module('BangaClient').factory('RootFactory', [
   "$http",
   "apiUrl",
   ($http, apiUrl) => {
-    const httpGet = $http.get(apiUrl);
-
+    let secure_token = null;
+    
     return {
       getApiRoot () {
-        return httpGet.then(res => res.data)
+        return $http({
+          url: apiUrl,
+          headers: {
+            'Authorization': "Token " + secure_token
+          }
+        }).then(res => res.data)
+      },
+      setToken (token) {
+        secure_token = token
+      },
+      getToken () {
+        return secure_token;
       }
     }
   }

@@ -9,11 +9,17 @@ angular.module('BangaClient').controller('ProductTypesController', [
     RootFactory.getApiRoot()
       .then(
         root => 
-          $http.get(`${root.product_types}`)
-               .then(
-                 res => $scope.product_types = res.data.results,
-                 console.log
-               )
+          $http({
+            url: `${root.product_types}`,
+            method: "GET",
+            headers: {
+              'Authorization': "Token " + RootFactory.getToken()
+            }
+          })
+          .then(
+            res => $scope.product_types = res.data.results,
+            console.log
+          )
         ,console.log
       );
   }

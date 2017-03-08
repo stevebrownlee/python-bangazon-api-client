@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.6.3",
+    "angular-cookies": "^1.6.3",
     "angular-route": "^1.5.8"
   }
 }
