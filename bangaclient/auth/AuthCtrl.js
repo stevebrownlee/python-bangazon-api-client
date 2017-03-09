@@ -3,7 +3,8 @@ angular.module('BangaClient').controller('AuthController', [
   '$http',
   '$location',
   'RootFactory',
-function($scope, $http, $location, RootFactory) {
+  'apiUrl',
+function($scope, $http, $location, RootFactory, apiUrl) {
 
   $scope.user = {
     username: "steve",
@@ -12,7 +13,7 @@ function($scope, $http, $location, RootFactory) {
 
   $scope.register = function() {
       $http({
-        url: "http://localhost:8000/register",
+        url: `${apiUrl}/register`,
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -26,11 +27,7 @@ function($scope, $http, $location, RootFactory) {
         }
       }).then(
         res => {
-          RootFactory.setToken(res.data.token);
-          console.log(RootFactory.getToken());
-          if (res.data.success === true) {
-              $location.path('/products');
-          }
+          // What comes back upon registration?
         },
         console.error
       );
@@ -39,7 +36,7 @@ function($scope, $http, $location, RootFactory) {
 
   $scope.login = function() {
       $http({
-        url: "http://localhost:8000/api-token-auth/",
+        url: `${apiUrl}/api-token-auth/`,
         method: "POST",
         data: {
           "username": $scope.user.username,
@@ -48,7 +45,6 @@ function($scope, $http, $location, RootFactory) {
       }).then(
         res => {
           RootFactory.setToken(res.data.token);
-          console.log(RootFactory.getToken());
           if (res.data.token !== "") {
               $location.path('/products');
           }
