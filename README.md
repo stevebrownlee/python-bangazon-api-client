@@ -22,8 +22,3 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_CREDENTIALS=True
 ```
 
-This allows my local machine access to the API, and allows the `Cookie` header to be sent. This is important because on `GET` requests, the cookie normally wouldn't be set, but if any resource in the API requires authentication for a `GET`, then the 
-
-`$httpProvider.defaults.withCredentials = true;` 
-
-configuration in Angular ensures that authentication will take place.

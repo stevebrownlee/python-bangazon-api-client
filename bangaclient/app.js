@@ -4,26 +4,26 @@ var app = angular.module('BangaClient', ['ngRoute'])
 
 angular.module('BangaClient').config(
 [
-    '$interpolateProvider',
-    '$routeProvider',
-    function($interpolateProvider, $routeProvider) {
+  '$interpolateProvider',
+  '$routeProvider',
+  function($interpolateProvider, $routeProvider) {
 
-      $interpolateProvider.startSymbol('((');
-      $interpolateProvider.endSymbol('))');
+    $interpolateProvider.startSymbol('((');
+    $interpolateProvider.endSymbol('))');
 
-      $routeProvider
-        .when('/', {
-          controller: 'AuthController',
-          templateUrl: 'bangaclient/auth/login.html'
-        })
-        .when('/products', {
-          controller: 'ProductController',
-          templateUrl: 'bangaclient/products/products.html'
-        })
-        .when('/types', {
-          controller: 'ProductTypesController',
-          templateUrl: 'bangaclient/products/producttypes.html'
-        });
+    $routeProvider
+      .when('/', {
+        controller: 'AuthController',
+        templateUrl: 'bangaclient/auth/login.html'
+      })
+      .when('/products', {
+        controller: 'ProductController',
+        templateUrl: 'bangaclient/products/products.html'
+      })
+      .when('/types', {
+        controller: 'ProductTypesController',
+        templateUrl: 'bangaclient/products/producttypes.html'
+      });
   }
 ]);
 
@@ -32,7 +32,7 @@ angular.module('BangaClient').factory('RootFactory', [
   "apiUrl",
   ($http, apiUrl) => {
     let secure_token = null;
-    
+
     return {
       getApiRoot () {
         return $http({
