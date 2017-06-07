@@ -16,6 +16,10 @@ angular.module('BangaClient').config(
         controller: 'AuthController',
         templateUrl: 'bangaclient/auth/login.html'
       })
+      .when('/register', {
+        controller: 'RegisterController',
+        templateUrl: 'bangaclient/auth/register.html'
+      })
       .when('/products', {
         controller: 'ProductController',
         templateUrl: 'bangaclient/products/products.html'

@@ -1,7 +1,7 @@
 <h1>Login</h1>
 
 <div>
-  <input type="text" placeholder="username" value="((user.username))">
-  <input type="password" placeholder="password" value="((user.password))">
+  <input type="text" placeholder="username" ng-model="((user.username))">
+  <input type="password" placeholder="password" ng-model="((user.password))">
   <button type="submit" ng-click="login()">Log In</button>
 </div>
